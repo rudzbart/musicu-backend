@@ -6,4 +6,5 @@ import pl.rudz.musicuapp.model.Song;
 
 @Repository
 public interface SongRepo extends JpaRepository<Song, Long> {
+    Song getSongById(long id);
 }

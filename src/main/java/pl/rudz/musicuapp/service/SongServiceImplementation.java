@@ -33,8 +33,17 @@ public class SongServiceImplementation implements SongService {
     }
 
     @Override
-    public boolean updateSong(Song song) {
-        Song newSong = songRepo.save(song);
-        return songRepo.findById(song.getId()).get().equals(newSong);
+    public Song updateSong(Song song, long id) {
+        Song songToUpdate = getSongById(id);
+        songToUpdate.setArtist(song.getArtist());
+        songToUpdate.setTitle(song.getTitle());
+        songToUpdate.setSpotifyuri(song.getSpotifyuri());
+        songRepo.save(songToUpdate);
+        return songToUpdate;
+    }
+
+    @Override
+    public Song getSongById(long id) {
+        return songRepo.getSongById(id);
     }
 }

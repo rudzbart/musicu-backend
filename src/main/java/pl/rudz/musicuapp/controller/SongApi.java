@@ -41,12 +41,8 @@ public class SongApi {
         return new ResponseEntity<>(id, HttpStatus.OK);
     }
 
-    @PutMapping
-    public ResponseEntity<Boolean> updateSong(@RequestBody Song song){
-        boolean songCheck = songService.updateSong(song);
-        if(songCheck){
-            return new ResponseEntity<>(true, HttpStatus.OK);
-        }
-        else return new ResponseEntity<>(null, HttpStatus.NO_CONTENT);
+    @PutMapping("/{id}")
+    public ResponseEntity<Song> updateSong(@RequestBody Song song, @PathVariable long id){
+        return new ResponseEntity<>(songService.updateSong(song,id), HttpStatus.OK);
     }
 }

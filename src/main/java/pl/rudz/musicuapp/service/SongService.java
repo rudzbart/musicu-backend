@@ -9,6 +9,6 @@ public interface SongService {
     List<Song> getAllSongs();
     Song addSong(Song song);
     void deleteSong(Long id);
-    boolean updateSong(Song song);
-
+    Song updateSong(Song song, long id);
+    Song getSongById(long id);
 }
